@@ -16,7 +16,7 @@
   "author": "Ivo Maixner <ivo.maixner@gmail.com> (https://lastware.cz)",
   "license": "Apache-2.0",
   "dependencies": {
-    "casefu-converter": "file:../casefu-converter",
+    "casefu-converter": "0.3.0",
     "commander": "2.20.0",
     "globby": "9.2.0"
   },
