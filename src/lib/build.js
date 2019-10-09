@@ -22,6 +22,7 @@ const build = async args => {
 
 const listFiles = async sources => {
   const fileNames = await globby(sources)
+  fileNames.sort()
   return fileNames.map(fileName => ({ fileName }))
 }
 
