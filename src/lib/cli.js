@@ -2,6 +2,7 @@
 
 const program = require('commander')
 const build = require('./build')
+const watch = require('./watch')
 
 program
   .version(require('../../package').version)
@@ -21,6 +22,20 @@ program
     } = cmd
     const args = { sources, target }
     build(args)
+  })
+
+program
+  .command('watch')
+  .description('Watch the sources directory and re-build CaseFu Functional Specification Document on any file change.')
+  .option('-s, --sources <sources>', 'glob pattern to match source files to process, default: ' + buildSourcesDefault)
+  .option('-t, --target <target>', 'filename of generated HTML file, default: ' + buildTargetDefault)
+  .action(cmd => {
+    const {
+      sources = buildSourcesDefault,
+      target = buildTargetDefault
+    } = cmd
+    const args = { sources, target }
+    watch(args)
   })
 
 program
