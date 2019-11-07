@@ -3,6 +3,7 @@
 const program = require('commander')
 const build = require('./build')
 const watch = require('./watch')
+const serve = require('./serve')
 
 program
   .version(require('../../package').version)
@@ -26,7 +27,8 @@ program
 
 program
   .command('watch')
-  .description('Watch the sources directory and re-build CaseFu Functional Specification Document on any file change.')
+  .description('Watch the sources directory' +
+    ' and re-build CaseFu Functional Specification Document on any file change.')
   .option('-s, --sources <sources>', 'glob pattern to match source files to process, default: ' + buildSourcesDefault)
   .option('-t, --target <target>', 'filename of generated HTML file, default: ' + buildTargetDefault)
   .action(cmd => {
@@ -36,6 +38,24 @@ program
     } = cmd
     const args = { sources, target }
     watch(args)
+  })
+
+program
+  .command('serve')
+  .description('Serve the sources directory,' +
+    ' re-build CaseFu Functional Specification Document on any file change' +
+    ' and reload the contents in the browser.')
+  .option('-s, --sources <sources>', 'glob pattern to match source files to process, default: ' + buildSourcesDefault)
+  .option('-t, --target <target>', 'filename of generated HTML file, default: ' + buildTargetDefault)
+  .option('-p, --port <port>', 'The port to bind to', '8080')
+  .action(cmd => {
+    const {
+      sources = buildSourcesDefault,
+      target = buildTargetDefault,
+      port
+    } = cmd
+    const args = { sources, target, port }
+    serve(args)
   })
 
 program

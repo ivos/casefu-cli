@@ -1,23 +1,27 @@
+const path = require('path')
 const chokidar = require('chokidar')
 const clear = require('cli-clear')
+const chalk = require('chalk')
 const build = require('./build')
 
 const watch = args => {
-  console.log('initializing', args)
+  clear()
+  console.log('Initializing watch', args)
   const watcher = chokidar.watch(args.sources, {
     ignoreInitial: true
   })
 
-  watcher.on('ready', () => {
-    clear()
-    console.log('loaded source files')
-    build(args)
+  watcher.on('ready', async () => {
+    // console.log('Loaded source files')
+    await build(args)
+    console.log('Navigate your browser to ' + chalk.blue.bold('file://' + path.resolve(args.target)))
   })
 
-  watcher.on('all', (event, path) => {
+  watcher.on('all', async (event, path) => {
     clear()
-    console.log(event, path)
-    build(args)
+    // console.log(event, path)
+    await build(args)
+    console.log('Reload your browser to display changes...')
   })
 }
 
