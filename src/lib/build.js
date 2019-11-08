@@ -51,6 +51,7 @@ const postProcessFile = (meta, file) => {
     .forEach(sectionCode => {
       file.html = converter.expandComputed(file.html, sectionCode, meta)
     })
+  file.html = converter.transformInnerLinks(file.fileName, file.html, meta)
 }
 
 const mergeFiles = files => {
