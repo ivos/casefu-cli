@@ -23,7 +23,7 @@ const initServing = args => {
     serverFile, args.port, buildDir, false, 'localhost', runFile, buildFile, true, true
   ]
   supervisor.run(reloadArgs)
-  console.log('Navigate your browser to ' + chalk.blue.bold('http://localhost:' + args.port + '/index.html'))
+  console.log('\nNavigate your browser to ' + chalk.blue.bold('http://localhost:' + args.port + '/index.html\n'))
 }
 
 const serve = args => {
