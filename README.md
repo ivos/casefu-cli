@@ -24,7 +24,7 @@ and generate a nice FSD in HTML format.
 
 ## Writing FSD
 
-1. Open a terminal and run:
+1. Open a terminal at the project directory and execute
 
 		npm run serve
 
@@ -41,4 +41,11 @@ To build output FSD run:
 
 	npm run build
 
-The output FSD is then available at `build/index.html`.
+The FSD is then available at `build/index.html`.
+
+## Sample FSD
+
+A sample FSD demonstrating the use of CaseFu generator is
+[**available here**](http://htmlpreview.github.io/?https://github.com/ivos/functional-specification-sample/blob/master/build/index.html#__home).
+
+It has been generated from [the following source files](https://github.com/ivos/functional-specification-sample).
