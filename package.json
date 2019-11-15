@@ -6,7 +6,6 @@
     "casefu": "./src/lib/cli.js"
   },
   "scripts": {
-    "sample": "node src/lib/cli.js build -s test/sample",
     "standard": "standard --fix"
   },
   "repository": {
