@@ -13,7 +13,7 @@ const rebuild = async args => {
 
 const initServing = args => {
   const runFile = path.join(os.tmpdir(), 'casefu-' + Math.random().toString().slice(2))
-  const serverFile = path.join(__dirname, '../../node_modules/reload/lib/reload-server.js')
+  const serverFile = require.resolve('reload/lib/reload-server.js')
 
   const buildDir = path.dirname(args.target)
   const buildFile = path.dirname(args.target)
