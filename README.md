@@ -22,18 +22,9 @@ and generate a nice FSD in HTML format.
 			"serve": "casefu serve"
 		}
 
-## Writing FSD
+4. Create file at `fsd/Overview.md` and put the following into it:
 
-1. Open a terminal at the project directory and execute
-
-		npm run serve
-
-2. Open a browser window and navigate to the URL given at the terminal.
-
-3. Create a `.md` file within an `fsd/` directory in the project.
-
-4. As you write into the files in the `fsd/` directory
-	and save a file, the FSD output in the browser gets automatically refreshed.
+		# My new system
 
 ## Building FSD
 
@@ -42,6 +33,32 @@ To build output FSD run:
 	npm run build
 
 The FSD is then available at `build/index.html`.
+
+## Writing FSD
+
+1. Open a terminal at the project directory and execute
+
+		npm run serve
+
+2. Open a browser window and navigate to the URL given at the terminal.
+
+3. As you write into the files in the `fsd/` directory
+	and save a file, the FSD output in the browser gets automatically refreshed.
+
+There is also a `watch` command that only re-builds the output FSD file
+on any change of the source files, but does not push the changes to the browser
+(the browser page needs to be refreshed manually in this case).
+
+## Parameters
+
+The `build`, `serve` and `watch` commands have the following parameters:
+
+- `-s, --sources <sources>` -
+	Glob pattern to match source files to process. Default: `fsd/**/*.md`
+- `-t, --target <target>` -
+	Filename of generated HTML file. Default: `build/index.html`
+- `-p, --port <port>` (only for `serve` command) -
+	Port to bind to. Default: `8080`
 
 ## Sample FSD
 

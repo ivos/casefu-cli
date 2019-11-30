@@ -14,8 +14,8 @@ const buildTargetDefault = 'build/index.html'
 program
   .command('build')
   .description('Build CaseFu Functional Specification Document.')
-  .option('-s, --sources <sources>', 'glob pattern to match source files to process, default: ' + buildSourcesDefault)
-  .option('-t, --target <target>', 'filename of generated HTML file, default: ' + buildTargetDefault)
+  .option('-s, --sources <sources>', 'glob pattern to match source files to process', buildSourcesDefault)
+  .option('-t, --target <target>', 'filename of generated HTML file', buildTargetDefault)
   .action(cmd => {
     const {
       sources = buildSourcesDefault,
@@ -29,8 +29,8 @@ program
   .command('watch')
   .description('Watch the sources directory' +
     ' and re-build CaseFu Functional Specification Document on any file change.')
-  .option('-s, --sources <sources>', 'glob pattern to match source files to process, default: ' + buildSourcesDefault)
-  .option('-t, --target <target>', 'filename of generated HTML file, default: ' + buildTargetDefault)
+  .option('-s, --sources <sources>', 'glob pattern to match source files to process', buildSourcesDefault)
+  .option('-t, --target <target>', 'filename of generated HTML file', buildTargetDefault)
   .action(cmd => {
     const {
       sources = buildSourcesDefault,
@@ -45,9 +45,9 @@ program
   .description('Serve the sources directory,' +
     ' re-build CaseFu Functional Specification Document on any file change' +
     ' and reload the contents in the browser.')
-  .option('-s, --sources <sources>', 'glob pattern to match source files to process, default: ' + buildSourcesDefault)
-  .option('-t, --target <target>', 'filename of generated HTML file, default: ' + buildTargetDefault)
-  .option('-p, --port <port>', 'The port to bind to', '8080')
+  .option('-s, --sources <sources>', 'glob pattern to match source files to process', buildSourcesDefault)
+  .option('-t, --target <target>', 'filename of generated HTML file', buildTargetDefault)
+  .option('-p, --port <port>', 'port to bind to', '8080')
   .action(cmd => {
     const {
       sources = buildSourcesDefault,
