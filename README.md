@@ -63,6 +63,10 @@ The `build`, `serve` and `watch` commands have the following parameters:
 ## Sample FSD
 
 A sample FSD demonstrating the use of CaseFu generator is
-[**available here**](http://htmlpreview.github.io/?https://github.com/ivos/functional-specification-sample/blob/master/build/index.html#__home).
+[**available here**](https://htmlpreview.github.io/?https://github.com/ivos/functional-specification-sample/blob/master/build/index.html#__home).
 
 It has been generated from [the following source files](https://github.com/ivos/functional-specification-sample).
+
+## Documentation
+
+The complete documentation is available at [CaseFu.com](https://casefu.com/).
