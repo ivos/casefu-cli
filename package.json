@@ -1,6 +1,6 @@
 {
   "name": "casefu-cli",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "CaseFu.com command-line interface.",
   "bin": {
     "casefu": "./src/lib/cli.js"
