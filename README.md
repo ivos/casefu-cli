@@ -59,6 +59,7 @@ The `build`, `serve` and `watch` commands have the following parameters:
 	Filename of generated HTML file. Default: `build/index.html`
 - `-p, --port <port>` (only for `serve` command) -
 	Port to bind to. Default: `8080`
+- `-v, --verbose` - List files processed
 
 ## Sample FSD
 

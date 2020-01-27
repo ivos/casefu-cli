@@ -16,12 +16,14 @@ program
   .description('Build CaseFu Functional Specification Document.')
   .option('-s, --sources <sources>', 'glob pattern to match source files to process', buildSourcesDefault)
   .option('-t, --target <target>', 'filename of generated HTML file', buildTargetDefault)
+  .option('-v, --verbose', 'list the files processed')
   .action(cmd => {
     const {
       sources = buildSourcesDefault,
-      target = buildTargetDefault
+      target = buildTargetDefault,
+      verbose = false
     } = cmd
-    const args = { sources, target }
+    const args = { sources, target, verbose }
     build(args)
   })
 
@@ -31,12 +33,14 @@ program
     ' and re-build CaseFu Functional Specification Document on any file change.')
   .option('-s, --sources <sources>', 'glob pattern to match source files to process', buildSourcesDefault)
   .option('-t, --target <target>', 'filename of generated HTML file', buildTargetDefault)
+  .option('-v, --verbose', 'list the files processed')
   .action(cmd => {
     const {
       sources = buildSourcesDefault,
-      target = buildTargetDefault
+      target = buildTargetDefault,
+      verbose = false
     } = cmd
-    const args = { sources, target }
+    const args = { sources, target, verbose }
     watch(args)
   })
 
@@ -48,13 +52,15 @@ program
   .option('-s, --sources <sources>', 'glob pattern to match source files to process', buildSourcesDefault)
   .option('-t, --target <target>', 'filename of generated HTML file', buildTargetDefault)
   .option('-p, --port <port>', 'port to bind to', '8080')
+  .option('-v, --verbose', 'list the files processed')
   .action(cmd => {
     const {
       sources = buildSourcesDefault,
       target = buildTargetDefault,
-      port
+      port,
+      verbose = false
     } = cmd
-    const args = { sources, target, port }
+    const args = { sources, target, port, verbose }
     serve(args)
   })
 

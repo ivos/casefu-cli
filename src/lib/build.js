@@ -6,9 +6,9 @@ const converter = require('casefu-converter')
 
 const build = async args => {
   const start = new Date()
-  console.log('>> build', args)
+  console.log('>> build, sources: ' + args.sources + ', target: ' + args.target)
   const files = await listFiles(args.sources)
-  await convertFiles(files)
+  await convertFiles(args.verbose, files)
   // console.log('files', files)
   const meta = converter.mergeMeta(files)
   // console.log('merged meta', meta)
@@ -17,7 +17,7 @@ const build = async args => {
   const searchSection = converter.buildSearchSection(meta)
   const targetContent = converter.htmlTemplate(mergedFiles + searchSection)
   await writeTarget(args.target, targetContent)
-  console.log('<< build @', new Date() - start, 'ms')
+  console.log('<< build, ' + files.length + ' files @ ' + (new Date() - start) + ' ms')
 }
 
 const listFiles = async sources => {
@@ -26,13 +26,13 @@ const listFiles = async sources => {
   return fileNames.map(fileName => ({ fileName }))
 }
 
-const convertFiles = async files => {
-  const promises = files.map(convertFile)
+const convertFiles = async (verbose, files) => {
+  const promises = files.map(convertFile(verbose))
   await Promise.all(promises)
 }
 
-const convertFile = async file => {
-  // console.log('converting source file:', file.fileName)
+const convertFile = verbose => async file => {
+  verbose && console.log('converting source file:', file.fileName)
   file.content = await util.promisify(fs.readFile)(file.fileName, 'utf8')
   const header = `<!--${file.fileName}-->\n`
   const converted = converter.convert(file.content)

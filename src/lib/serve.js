@@ -7,8 +7,8 @@ const chalk = require('chalk')
 const build = require('./build')
 
 const rebuild = async args => {
-  const { sources, target } = args
-  await build({ sources, target })
+  const { sources, target, verbose } = args
+  await build({ sources, target, verbose })
 }
 
 const initServing = args => {
