@@ -16,14 +16,14 @@ const initServing = args => {
   const serverFile = require.resolve('reload/lib/reload-server.js')
 
   const buildDir = path.dirname(args.target)
-  const buildFile = path.dirname(args.target)
+  const buildFile = path.basename(args.target)
 
   const reloadArgs = [
     '-e', 'html', '-w', buildDir, '-q', '--',
     serverFile, args.port, buildDir, false, 'localhost', runFile, buildFile, true, true
   ]
   supervisor.run(reloadArgs)
-  console.log('\nNavigate your browser to ' + chalk.blue.bold('http://localhost:' + args.port + '/index.html\n'))
+  console.log('\nNavigate your browser to ' + chalk.blue.bold('http://localhost:' + args.port + '/' + buildFile + '\n'))
 }
 
 const serve = args => {
