@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/ivos/casefu-cli.git"
   },
-  "author": "Ivo Maixner <ivo.maixner@gmail.com> (https://lastware.cz)",
+  "author": "Ivo Maixner <ivo.maixner@gmail.com> (https://www.lastware.cz)",
   "license": "Apache-2.0",
   "homepage": "https://casefu.com/",
   "dependencies": {
