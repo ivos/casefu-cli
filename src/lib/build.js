@@ -15,7 +15,8 @@ const build = async args => {
   postProcessFiles(meta, files)
   const mergedFiles = mergeFiles(files)
   const searchSection = converter.buildSearchSection(meta)
-  const targetContent = converter.htmlTemplate(mergedFiles + searchSection)
+  const overviewDiagramsSection = converter.buildOverviewDiagramsSection(meta)
+  const targetContent = converter.htmlTemplate(mergedFiles + overviewDiagramsSection + searchSection)
   await writeTarget(args.target, targetContent)
   console.log('<< build, ' + files.length + ' files @ ' + (new Date() - start) + ' ms')
 }
