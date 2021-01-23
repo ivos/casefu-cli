@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 const program = require('commander')
-const build = require('./build')
+const { build } = require('./build')
 const watch = require('./watch')
 const serve = require('./serve')
+const generate = require('./generate')
 
 program
   .version(require('../../package').version)
@@ -11,6 +12,8 @@ program
 
 const buildSourcesDefault = 'fsd/**/*.md'
 const buildTargetDefault = 'build/index.html'
+const buildTargetDirDefault = 'generated'
+const setupJsonDefault = 'setup.json'
 program
   .command('build')
   .description('Build CaseFu Functional Specification Document.')
@@ -62,6 +65,22 @@ program
     } = cmd
     const args = { sources, target, port, verbose }
     serve(args)
+  })
+
+program
+  .command('generate')
+  .description('Generate an application from the FSD.')
+  .option('-s, --sources <sources>', 'glob pattern to match source files to process', buildSourcesDefault)
+  .option('-t, --target-dir <targetDir>', 'directory into which the app will be generated', buildTargetDirDefault)
+  .option('-c, --setup <setup.json>', 'setup.json file', 'setup.json')
+  .action(cmd => {
+    const {
+      sources = buildSourcesDefault,
+      targetDir = buildTargetDirDefault,
+      setup = setupJsonDefault
+    } = cmd
+    const args = { sources, targetDir, setup }
+    generate(args)
   })
 
 program

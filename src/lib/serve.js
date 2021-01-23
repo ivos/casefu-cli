@@ -4,7 +4,7 @@ const os = require('os')
 const chokidar = require('chokidar')
 const clear = require('cli-clear')
 const chalk = require('chalk')
-const build = require('./build')
+const { build } = require('./build')
 
 const rebuild = async args => {
   const { sources, target, verbose } = args

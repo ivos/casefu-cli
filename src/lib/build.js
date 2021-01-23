@@ -4,14 +4,19 @@ const fs = require('fs')
 const util = require('util')
 const converter = require('casefu-converter')
 
-const build = async args => {
-  const start = new Date()
-  console.log('>> build, sources: ' + args.sources + ', target: ' + args.target)
+const buildMeta = async args => {
   const files = await listFiles(args.sources)
   await convertFiles(args.verbose, files)
   // console.log('files', files)
   const meta = converter.mergeMeta(files)
   // console.log('merged meta', meta)
+  return [files, meta]
+}
+
+const build = async args => {
+  const start = new Date()
+  console.log('>> build, sources: ' + args.sources + ', target: ' + args.target)
+  const [files, meta] = buildMeta(args)
   postProcessFiles(meta, files)
   const mergedFiles = mergeFiles(files)
   const searchSection = converter.buildSearchSection(meta)
@@ -19,6 +24,7 @@ const build = async args => {
   const targetContent = converter.htmlTemplate(mergedFiles + overviewDiagramsSection + searchSection)
   await writeTarget(args.target, targetContent)
   console.log('<< build, ' + files.length + ' files @ ' + (new Date() - start) + ' ms')
+  return { meta }
 }
 
 const listFiles = async sources => {
@@ -67,4 +73,4 @@ const writeTarget = async (target, content) => {
   await util.promisify(fs.writeFile)(target, content)
 }
 
-module.exports = build
+module.exports = { buildMeta, build }

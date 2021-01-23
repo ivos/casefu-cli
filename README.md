@@ -22,7 +22,7 @@ and generate a nice FSD in HTML format.
 			"serve": "casefu serve"
 		}
 
-4. Create file at `fsd/Overview.md` and put the following into it:
+4. Create a file at `fsd/Overview.md` and put the following into it:
 
 		# My new system
 
