@@ -16,7 +16,7 @@ const buildMeta = async args => {
 const build = async args => {
   const start = new Date()
   console.log('>> build, sources: ' + args.sources + ', target: ' + args.target)
-  const [files, meta] = buildMeta(args)
+  const [files, meta] = await buildMeta(args)
   postProcessFiles(meta, files)
   const mergedFiles = mergeFiles(files)
   const searchSection = converter.buildSearchSection(meta)
