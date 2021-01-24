@@ -16,7 +16,7 @@
   "license": "Apache-2.0",
   "homepage": "https://casefu.com/",
   "dependencies": {
-    "casefu-converter": "0.8.0",
+    "casefu-converter": "0.9.0",
     "casefu-generator": "0.1.2",
     "chalk": "4.1.0",
     "chokidar": "3.4.2",
