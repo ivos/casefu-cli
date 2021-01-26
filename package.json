@@ -17,7 +17,7 @@
   "homepage": "https://casefu.com/",
   "dependencies": {
     "casefu-converter": "0.9.0",
-    "casefu-generator": "0.1.2",
+    "casefu-generator": "0.1.3",
     "chalk": "4.1.0",
     "chokidar": "3.4.2",
     "cli-clear": "1.0.4",
